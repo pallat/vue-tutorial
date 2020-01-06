@@ -28,6 +28,10 @@
       <input type="submit" class="btn btn-primary" />
     </form>
 
+    <form @submit.prevent="fetchReviews">
+      <input type="submit" class="btn btn-primary" />
+    </form>
+
     <br />
     {{ highScoreBooks }}
     <br />
@@ -51,6 +55,11 @@ export default {
     createABook() {
       const book = { name: this.title, score: this.score };
       this.books.push(book);
+    },
+    fetchReviews() {
+      this.axios.get("http://localhost:3000/reviews").then(response => {
+        console.log(response.data);
+      });
     }
   },
   computed: {
