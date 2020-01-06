@@ -40,7 +40,8 @@ export default {
       return this.books.filter(b => b.score > 6).length;
     },
     createABook() {
-      this.books.push({ name: this.title, score: this.score });
+      const book = { name: this.title, score: this.score };
+      this.books.push(book);
     }
   },
   computed: {
