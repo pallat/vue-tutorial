@@ -12,6 +12,14 @@
     <button v-on:click="clickToggle">Toggle</button>
 
     <br />
+
+    <form @submit.prevent="createABook">
+      <input type="text" v-model="title" />
+      <input type="text" v-model="score" />
+      <input type="submit" />
+    </form>
+
+    <br />
     {{ highScoreBooks }}
     <br />
     {{ totalHighScoreBooks() }}
@@ -30,6 +38,9 @@ export default {
     },
     totalHighScoreBooks() {
       return this.books.filter(b => b.score > 6).length;
+    },
+    createABook() {
+      this.books.push({ name: this.title, score: this.score });
     }
   },
   computed: {
@@ -41,6 +52,8 @@ export default {
     return {
       name: "John",
       placeholderName: "input your name",
+      title: "",
+      score: 0,
       books: [
         { name: "Harry Potter", score: 9 },
         { name: "Percy Jackson", score: 7 },
