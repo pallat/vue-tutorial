@@ -13,9 +13,18 @@
 
     <br />
 
-    <form @submit.prevent="createABook">
-      <input type="text" v-model="title" />
-      <input type="text" v-model="score" />
+    <form class="container" @submit.prevent="createABook">
+      <div class="form-group row">
+        <label for="name">Title</label>
+        <input id="name" class="form-control" type="text" v-model="title" />
+      </div>
+
+      <div class="form-group row">
+        <label for="score">Score</label>
+        <select class="form-control" name="score" id="score">
+          <option v-for="(s, index) in 10" value="s" :key="index">{{ s }}</option>
+        </select>
+      </div>
       <input type="submit" class="btn btn-primary" />
     </form>
 
