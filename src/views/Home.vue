@@ -10,6 +10,11 @@
     <div v-show="toggle">Hello {{ name }}</div>
     <div v-if="!toggle">Good morning</div>
     <button v-on:click="clickToggle">Toggle</button>
+
+    <br />
+    {{ highScoreBooks }}
+    <br />
+    {{ totalHighScoreBooks() }}
   </div>
 </template>
 
@@ -22,6 +27,14 @@ export default {
   methods: {
     clickToggle() {
       this.toggle = !this.toggle;
+    },
+    totalHighScoreBooks() {
+      return this.books.filter(b => b.score > 6).length;
+    }
+  },
+  computed: {
+    highScoreBooks() {
+      return this.books.filter(b => b.score > 6);
     }
   },
   data() {
