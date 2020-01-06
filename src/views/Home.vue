@@ -16,7 +16,7 @@
     <form @submit.prevent="createABook">
       <input type="text" v-model="title" />
       <input type="text" v-model="score" />
-      <input type="submit" />
+      <input type="submit" class="btn btn-primary" />
     </form>
 
     <br />
